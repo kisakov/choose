@@ -24,7 +24,7 @@ module FileProcessor
       FileUtils.mv(file, dst)
     end.tap do |files|
       if files.any?
-        puts "#{files.size} file(s) mooved to #{Dir.pwd}/extra folder".colorize(:green)
+        puts "#{files.size} file(s) moved to #{Dir.pwd}/extra folder".colorize(:green)
       end
     end
   end
