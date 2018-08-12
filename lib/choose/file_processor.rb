@@ -6,12 +6,12 @@ module FileProcessor
     original_files = Dir["#{original_dir}/*"].map { |file| filename(file) }
     choosen_files = Dir["#{choosen_dir}/*"].map { |file| filename(file) }
     extra_files = original_files - choosen_files
+    dst_dir = "extra"
 
     Dir["#{original_dir}/*"].select do |original_file|
       extra_files.include?(File.basename(original_file, '.*'))
     end.tap do |files|
       if files.any?
-        dst_dir = "extra"
         FileUtils.mkdir_p(dst_dir)
 
         puts "Moving files:"
