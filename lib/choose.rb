@@ -5,6 +5,9 @@ require 'colorize'
 module Choose
   def self.run!
     if ARGV.size == 2
+      return puts("#{ARGV[0]} folder doesn't exist!".colorize(:red)) unless !Dir.exist?(ARGV[0])
+      return puts("#{ARGV[1]} folder doesn't exist!".colorize(:red)) unless !Dir.exist?(ARGV[1])
+
       FileProcessor.move!(ARGV[0], ARGV[1])
     else
       puts "Invalid arguments! Please provide two folders:".colorize(:red)
